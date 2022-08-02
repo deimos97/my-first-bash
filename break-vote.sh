@@ -2,7 +2,13 @@
 
 for (( ; ; ))
 do
-    csrf_token=`curl -c cookies.txt https://xoyondo.com/ap/fqlWhr5Xxpq8uf0 | grep 'data-csrftoken="' | cut -d"\"" -f2`
+    csrf_token=`\
+        curl\
+            -H 'accept: application/json' \
+            -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+            -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36' \
+            -x HTTP://85.208.209.218:8085 \
+            -c cookies.txt https://xoyondo.com/ap/fqlWhr5Xxpq8uf0 | grep 'data-csrftoken="' | cut -d"\"" -f2`
 
     echo $csrf_token
 
